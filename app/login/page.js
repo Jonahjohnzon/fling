@@ -78,7 +78,7 @@ const page = () => {
                     return(
                         <div className=' flex flex-col justify-between items-centerv w-full'>
                         <div className=' text-sm  px-4 sm:px-10 pb-10 pt-5 w-[100%] flex flex-col items-center '>
-                            <div  className=' h-10 w-full flex justify-center'>{result != ""&&<p className=' font-semibold text-lg'>{result}</p>}</div>
+                            <div  className=' h-10 w-full flex justify-center'>{result != ""&&<p className=' font-semibold '>{result}</p>}</div>
                             <div className=' flex justify-between w-full items-center mb-8'>
                                 <div className='sm:w-40 w-24  '>
                                     <label className=' font-semibold'>Email:</label>
