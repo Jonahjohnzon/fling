@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.link-container {
+  @apply flex items-start justify-between no-underline overflow-hidden bg-white bg-opacity-10 w-fit max-w-[300px] sm:max-w-[600px] h-fit border border-white border-opacity-30 p-1;
+}
+
+.link-container:hover {
+  @apply border-opacity-40;
+}
+
+.link-container img {
+  @apply max-w-[50px] max-h-[50px] inline-block mr-2;
+}
+
+.link-container strong {
+  @apply h-fit flex flex-col justify-center no-underline;
+}
+
+.link-container strong em:nth-of-type(1) {
+  @apply text-[12px] sm:text-[14px] font-semibold text-[#2095F2] inline not-italic leading-none sm:mb-2 no-underline;
+}
+
+.link-container strong em:nth-of-type(2) {
+  @apply text-[10px] sm:text-[12px] font-medium text-white not-italic leading-[1.4] mb-1;
+}
+
+.link-container strong em:nth-of-type(3) {
+  @apply text-[7px] sm:text-[11px] font-medium  not-italic leading-[1.4];
+}
+
+
+  .iframe-wrapper {
+    @apply xl:w-[550px] w-[250px] sm:w-[300px] h-[220px] lg:w-[450px] lg:h-[300px]  xl:h-[370px] prose overflow-hidden
+}
+
+iframe {
+  @apply xl:w-[550px] w-[250px] sm:w-[300px] h-[220px] lg:w-[450px] lg:h-[300px] mb-1  xl:h-[370px] prose overflow-hidden
+}
+
+
+
+p{
+  height:initial;
+  margin: 0%;
+  padding: 0%;
+}
+
+.loading-placeholder{
+  @apply bg-blacke  text-white rounded-sm px-3 py-2 animate-fade-loop 
+}
+
