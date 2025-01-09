@@ -9,6 +9,7 @@ import ProfileImage from './Profileimmg';
 
 const ForumTab = ({data, keys, name, hide, follow, Post, load2}) => {
   const navigate = useRouter()
+  const Main = process.env.NEXT_PUBLIC_MAIN
   let urlname = Encode(name)
   let urltitle = Encode(data.title)
   function formatNumber(num) {
@@ -73,7 +74,7 @@ const ForumTab = ({data, keys, name, hide, follow, Post, load2}) => {
         navigate.push(`/${urlname}/${urltitle}/${data._id}/1#post-1`)}}>
           <div className='flex items-start w-full'>
           <section className=' mr-2'>
-          <ProfileImage imageUrl={data.image} altText={"img"} defaultImageUrl={"https://vidplus.com.ng/df.png"}/>   
+          <ProfileImage imageUrl={data.image} altText={"img"} defaultImageUrl={`${Main}/df.png`}/>   
        </section>
           <section>
             <div className=' flex  flex-col items-start text-xs sn:text-sm lg:font-semibold  mb-1 pr-3'><div className={`py-1 px-2 mr-2  ${getBgClass(data?.category)} mb-1 text-xs font-semibold h-fit whitespace-nowrap rounded-sm `}>{data?.category}</div><p className=' font-medium lg:font-semibold  text-xs sm:text-sm'>{data.title}</p></div>

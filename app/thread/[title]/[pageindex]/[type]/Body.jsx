@@ -8,7 +8,6 @@ import Sidenav from '@/app/Component/Category/Sidenav';
 import { useRouter } from 'next-nprogress-bar';
 import { loggeds } from '@/app/action';
 import { Decode } from '@/app/Component/Tab/Encode';
-import Edit from './Component/Edit';
 import Loadelement from '@/app/Loadelement';
 
 const Body = ({params}) => {
@@ -16,7 +15,6 @@ const Body = ({params}) => {
   const navigate = useRouter()
   const [mod, setmod] = useState(false)
   const [thread, setthread]= useState([])
-  const [edit, setedit] = useState(false)
   let str = params.title
   let index = params.pageindex
   let type = params.type
@@ -25,11 +23,6 @@ const Body = ({params}) => {
   let space = Decode(str)
   let Url = Decode(space);
   const [load, setload] = useState(false)
-  const [title, settitle] = useState("")
-  const [image, setimage] = useState("")
-  const [stick, setstick] = useState(false)
-  const [category, setcategory] = useState("")
-  const [replyallow, setreplyallow] = useState(true)
   const Api = process.env.NEXT_PUBLIC_DOMAIN
 
   let about = Main.flatMap(item =>
@@ -77,11 +70,6 @@ const Body = ({params}) => {
   return (
     <div className=' min-h-[100vh]'>
     {load ?<div className=' overflow-x-hidden   flex justify-center pb-20 pt-2 select-none'>
-      {edit&&<div className=' fixed z-50 h-[100vh] bg-bg bg-opacity-60 flex justify-center items-center  w-[100vw]  top-0 right-0'>
-        <div className="xl:w-[50%] w-full sm:w-[90%] lg:w-[70%] bg-bg p-5 border-[1px] border-white overflow-hidden border-opacity-25 rounded-md" >
-        <Edit id={id}  setedit={setedit} mod={mod} title={title} stick={stick} category={category} replyallow={replyallow} image={image}/>
-        </div>
-      </div>}
       <div className=' w-[95%] 2xl:w-[93%] 3xl:w-[80%]'>
         <section className=' flex sm:flex-row flex-col mb-7 justify-between items-start sm:items-center' >
           <div className=' flex flex-col justify-between mb-2 sm:mb-0'>
@@ -108,7 +96,7 @@ const Body = ({params}) => {
           </div>
         </section>
         <section className=' flex xl:flex-row flex-col items-center xl:items-start justify-between mt-5'>
-          <Forumbody Url={Url} setedit={setedit} thread={thread}  setreplyallow={setreplyallow} setcategory={setcategory} setid={setid} size={size} str={str} index={index} profi={profi} mod={mod} settitle={settitle} setimage={setimage} setstick={setstick} type={type}/>
+          <Forumbody Url={Url}  thread={thread}  setid={setid} size={size} str={str} index={index} profi={profi} mod={mod}  type={type}/>
           <Sidenav forum={space}/>
         </section>
         <section>

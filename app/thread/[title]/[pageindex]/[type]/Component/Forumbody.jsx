@@ -4,7 +4,7 @@ import { useRouter } from "next-nprogress-bar";
 
 import Pager from './pager'
 
-const Forumbody = ({str, thread, size, index, setid, setedit, mod, profi,settitle,setimage,setstick, type, setcategory, setreplyallow}) => {
+const Forumbody = ({str, thread, size, index, setid, mod, profi, type}) => {
     const navigate = useRouter()
     const Left =()=>{
             const postInt = parseInt(index, 10); 
@@ -91,7 +91,7 @@ const Forumbody = ({str, thread, size, index, setid, setedit, mod, profi,settitl
                        
                         return(
                             <div key={i}>
-                           { e.sticky &&<div key={e._id}><ForumTab data={e} setedit={setedit} setid={setid} keys={e._id}  name={e.category} mod={mod} profi={profi} settitle={settitle} setimage={setimage} setstick={setstick} setreplyallow={setreplyallow} setcategory={setcategory}/></div>}
+                           { e.sticky &&<div key={e._id}><ForumTab data={e}  setid={setid} keys={e._id}  name={e.category} mod={mod} profi={profi} /></div>}
                             </div>
                         )
                     })}
@@ -107,7 +107,7 @@ const Forumbody = ({str, thread, size, index, setid, setedit, mod, profi,settitl
                         return(
                             <div key={i}>
                            { e.sticky ||
-                            <div key={e._id}><ForumTab data={e} keys={e._id} setedit={setedit} setid={setid}  name={e.category} mod={mod} profi={profi} settitle={settitle} setimage={setimage} setstick={setstick} setreplyallow={setreplyallow} setcategory={setcategory}/></div>}
+                            <div key={e._id}><ForumTab data={e} keys={e._id}  setid={setid}  name={e.category} mod={mod} profi={profi} /></div>}
                             </div>
                         )
                     })}
