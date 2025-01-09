@@ -7,6 +7,8 @@ import { Formik } from 'formik'
 
 const Edit = ({id, setedit, mod, title, image, stick, category, replyallow}) => {
   const Api = process.env.NEXT_PUBLIC_DOMAIN
+  const Main = process.env.NEXT_PUBLIC_MAIN
+
       const [load, setload] = useState(false)
       const Pass = yup.object({
         title: yup.string().required().max(150).min(2).label('Thread Title'),
@@ -37,6 +39,21 @@ const Edit = ({id, setedit, mod, title, image, stick, category, replyallow}) => 
                 if(!logged){
                   return;
               }
+              const fallbackImage = `${Main}/df.png`
+              async function validateImage(url) {
+                try {
+                  const response = await fetch(url, { method: "HEAD" });
+                  return response.ok;
+                } catch {
+                  return false;
+                }
+              }
+              let imag = form.image
+              const isValidImage = await validateImage(imag);
+              if (!isValidImage) {
+                imag = fallbackImage;
+              }
+              form.image = imag
               const token = logged.token;
                   const data = await fetch(`${Api}/editpost/${id}/${prof._id}`,{
                     method:'PUT',

@@ -19,6 +19,7 @@ export async function generateMetadata({ params }) {
       return;
     }
 
+    
     const title = info?.data?.title;
     const image = info?.data?.image;
     const category = info?.data?.category;

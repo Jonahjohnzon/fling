@@ -12,6 +12,8 @@ import * as yup from 'yup'
 
 const page = ({params}) => {
   const Api = process.env.NEXT_PUBLIC_DOMAIN
+  const Main = process.env.NEXT_PUBLIC_MAIN
+
   const tiptapRef = useRef();
   let userSchema = yup.object({
     title: yup.string().required().max(150).min(2).label('Thread Title'),
@@ -39,6 +41,21 @@ const page = ({params}) => {
           if(!logged){
             return;
         }
+        const fallbackImage = `${Main}/df.png`
+        async function validateImage(url) {
+          try {
+            const response = await fetch(url, { method: "HEAD" });
+            return response.ok;
+          } catch {
+            return false;
+          }
+        }
+        let image = form.link
+        const isValidImage = await validateImage(image);
+        if (!isValidImage) {
+          image = fallbackImage;
+        }
+        form.link = image
         const token = logged.token;
           if(!tiptapRef?.current)
             {
